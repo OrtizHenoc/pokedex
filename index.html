@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/main.css">
+    <title>Pokedex</title>
+</head>
+<body>
+    <header>
+        La mejor pokedex que existe
+    </header>
+    <main class="pokedex">
+        
+        <section class="pokedex-pokemon">
+            <div class="pokemon-img">
+                <button class="pokemon-button" onclick="prevImg()">
+                    Left
+                </button>
+                <img src="" alt="Nombre de Pokemon" id="pokeimg">
+                <button class="pokemon-button" onclick="nextImg()">
+                    right
+                </button>
+            </div>
+            <div class="pokemon-stats">
+                <div class="pokemon-damage">
+                    <span>Damage</span>
+                    <span id="dmg">0</span>
+                </div>
+                <div class="pokemon-defense">
+                    <span>Defense</span>
+                    <span id="dfs">0</span>
+                </div>
+                <div class="pokemon-velocity">
+                    <span>Velocity</span>
+                    <span id="vel">0</span>
+                </div>
+                <div class="pokemon-defense-special">
+                    <span>Defense special</span>
+                    <span id="sp-def">0</span>
+                </div>
+            </div>
+            <div class="pokedex-next">
+                <button class="pokedex-button" onclick="prevPokemon()">Prev Pokemon</button>
+                <button class="pokedex-button" onclick="nextPokemon()">Next Pokemon</button>
+            </div>
+        </section> 
+        <section class="pokemon-info">
+            <div class="pokemon-description">
+                <p id="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sed ut ad. Cupiditate quisquam repudiandae atque dolorem voluptas tenetur possimus odio laborum doloribus adipisci deserunt aspernatur nulla, fugiat est sit.</p>
+            </div>
+            <ul class="pokedex-evolution" id="evol">
+            </ul>
+        </section>
+    </main>
+    <footer>
+        Hecho con sudor y lagrimas JAJA 💚
+    </footer>
+    <script src="./src/index.js"></script>
+</body>
+</html>

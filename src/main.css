@@ -1,0 +1,40 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    background-color: #121F3D;
+    color: white;
+}
+body{
+    font-family: sans-serif;
+}
+header, footer{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
+.pokedex{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #fb2934;
+}
+.pokedex-pokemon, .pokedex-info{
+    width: 50%;
+}
+.pokemon-img img{
+    width: 40%;
+    height: 60px;
+    object-fit: cover;
+}
+footer{
+    font-size: 1.2rem;
+}
