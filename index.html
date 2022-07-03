@@ -18,27 +18,47 @@
                 <button class="pokemon-button" onclick="prevImg()">
                     Left
                 </button>
-                <img src="" alt="Nombre de Pokemon" id="pokeimg">
+                <img src="" alt="Imagen de Pokemon" id="pokeimg">
                 <button class="pokemon-button" onclick="nextImg()">
                     right
                 </button>
             </div>
             <div class="pokemon-stats">
+                <div class="pokemon-ps">
+                    <span>Hp</span>
+                    <div class="progress-bar">
+                        <span  id="hp">0</span>
+                    </div>
+                </div>
                 <div class="pokemon-damage">
                     <span>Damage</span>
-                    <span id="dmg">0</span>
+                    <div class="progress-bar">
+                        <span  id="dmg">0</span>
+                    </div>
                 </div>
                 <div class="pokemon-defense">
                     <span>Defense</span>
-                    <span id="dfs">0</span>
+                    <div class="progress-bar">
+                        <span  id="dfs">0</span>
+                    </div>
                 </div>
                 <div class="pokemon-velocity">
                     <span>Velocity</span>
-                    <span id="vel">0</span>
+                    <div class="progress-bar">
+                        <span  id="vel">0</span>
+                    </div>
+                </div>
+                <div class="pokemon-damage-special">
+                    <span>Special damage</span>
+                    <div class="progress-bar">
+                        <span  id="sp-dmg">0</span>
+                    </div>
                 </div>
                 <div class="pokemon-defense-special">
-                    <span>Defense special</span>
-                    <span id="sp-def">0</span>
+                    <span>Special defense</span>
+                    <div class="progress-bar">
+                        <span  id="sp-def">0</span>
+                    </div>
                 </div>
             </div>
             <div class="pokedex-next">

@@ -27,6 +27,19 @@ header, footer{
     padding: 10px;
     background-color: #fb2934;
 }
+
+.pokemon-stats span{
+    display: block;
+}
+.progress-bar{
+    width: 100%;
+    text-align: center;
+    border: 2px solid gray;
+    
+}
+.progress-bar span{
+    background-color: #121F3D;
+}
 .pokedex-pokemon, .pokedex-info{
     width: 50%;
 }
