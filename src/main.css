@@ -31,6 +31,9 @@ header, footer{
 .pokemon-stats span{
     display: block;
 }
+.pokemon-description{
+    text-transform: lowercase;
+}
 .progress-bar{
     width: 100%;
     text-align: center;
