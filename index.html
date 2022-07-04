@@ -12,8 +12,12 @@
         La mejor pokedex que existe
     </header>
     <main class="pokedex">
-        
+        <form onsubmit="searchPokemon()">
+            <input class="search-pokemon" type="text" name="search">
+            <button type="submit">Buscar Pokemon</button>
+        </form>
         <section class="pokedex-pokemon">
+            <h2 class="pokemon-name" id="pokeName"></h2>
             <div class="pokemon-img">
                 <button class="pokemon-button" onclick="prevImg()">
                     Left
@@ -25,45 +29,45 @@
             </div>
             <div class="pokemon-stats">
                 <div class="pokemon-ps">
-                    <span>Hp</span>
+                    <span>HP</span>
                     <div class="progress-bar">
                         <span  id="hp">0</span>
                     </div>
                 </div>
                 <div class="pokemon-damage">
-                    <span>Damage</span>
+                    <span>ATK</span>
                     <div class="progress-bar">
                         <span  id="dmg">0</span>
                     </div>
                 </div>
                 <div class="pokemon-defense">
-                    <span>Defense</span>
+                    <span>DEF</span>
                     <div class="progress-bar">
                         <span  id="dfs">0</span>
                     </div>
                 </div>
-                <div class="pokemon-velocity">
-                    <span>Velocity</span>
-                    <div class="progress-bar">
-                        <span  id="vel">0</span>
-                    </div>
-                </div>
                 <div class="pokemon-damage-special">
-                    <span>Special damage</span>
+                    <span>S.ATK</span>
                     <div class="progress-bar">
                         <span  id="sp-dmg">0</span>
                     </div>
                 </div>
                 <div class="pokemon-defense-special">
-                    <span>Special defense</span>
+                    <span>S.DEF</span>
                     <div class="progress-bar">
                         <span  id="sp-def">0</span>
                     </div>
                 </div>
+                <div class="pokemon-velocity">
+                    <span>Speed</span>
+                    <div class="progress-bar">
+                        <span  id="vel">0</span>
+                    </div>
+                </div>
             </div>
             <div class="pokedex-next">
-                <button class="pokedex-button" onclick="prevPokemon()">Prev Pokemon</button>
-                <button class="pokedex-button" onclick="nextPokemon()">Next Pokemon</button>
+                <button class="pokedex-buttons" onclick="prevPokemon()">Prev Pokemon</button>
+                <button class="pokedex-buttons" onclick="nextPokemon()">Next Pokemon</button>
             </div>
         </section> 
         <section class="pokemon-info">
@@ -75,10 +79,12 @@
         </section>
     </main>
     <section>
-        <h2>Los pokemons mas facheores</h2>
-        <button onclick="prevPokemons()">Prev Pokemons</button>
-        <button onclick="nextPokemons()">Next Pokemons</button>
-        <ul id="pokemons"></ul>
+        <div class="list-pokemon-header">
+            <h2>Pokemons List</h2>
+            <button onclick="prevPokemons()">Prev Pokemons</button>
+            <button onclick="nextPokemons()">Next Pokemons</button>
+        </div>
+        <ul  id="pokemons"></ul>
     </section>
     <footer>
         Hecho con sudor y lagrimas JAJA 💚

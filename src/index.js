@@ -1,3 +1,4 @@
+const pokeName = document.querySelector("#pokeName")
 const pokeImg = document.querySelector("#pokeimg")
 const pokeDesc = document.querySelector("#desc")
 const pokeHp = document.querySelector("#hp")
@@ -23,7 +24,7 @@ const fetchData = (API) =>{
         .then((data) => data)
 }
 
-const wirteDescription = (API,node) => {
+const writeDescription = (API,node) => {
     fetchData(API).then(specie => {
         node.textContent = specie.flavor_text_entries[0].flavor_text;
     })
@@ -39,30 +40,24 @@ const printPokemon = (pokemon) => {
         if(sprites.length>0){
             sprites = [];
         }
-        let barra = 0;
+        //console.log(data)
         currentPokemon = data
-        //console.log(currentPokemon)
+        pokeName.textContent = data.name
         pokeImg.src = data.sprites.front_default
-        pokeHp.textContent = data.stats[0].base_stat
-        barra = `${data.stats[0].base_stat}`/2 ;
-        //console.log(barra)
-        pokeHp.style.width = `${barra}%`
+        pokeHp.textContent = data.stats[0].base_stat   
         pokeDmg.textContent = data.stats[1].base_stat
-        barra = `${data.stats[1].base_stat}`/2 ;
-        pokeDmg.style.width = `${barra}%`
         pokeDef.textContent = data.stats[2].base_stat
-        barra = `${data.stats[2].base_stat}`/2 ;
-        pokeDef.style.width = `${barra}%`
-        pokeVel.textContent = data.stats[5].base_stat
-        barra = `${data.stats[5].base_stat}`/2 ;
-        pokeVel.style.width = `${barra}%`
         pokeSpDmg.textContent = data.stats[3].base_stat
-        barra = `${data.stats[3].base_stat}`/2 ;
-        pokeSpDmg.style.width = `${barra}%`
         pokeSpDef.textContent = data.stats[4].base_stat
-        barra = `${data.stats[4].base_stat}`/2 ;
-        pokeSpDef.style.width = `${barra}%`
-        wirteDescription(data.species.url , pokeDesc);
+        pokeVel.textContent = data.stats[5].base_stat
+
+        pokeHp.style.width = `${data.stats[0].base_stat/2}%`
+        pokeDmg.style.width = `${data.stats[1].base_stat/2}%`
+        pokeDef.style.width = `${data.stats[2].base_stat/2}%`
+        pokeSpDmg.style.width = `${data.stats[3].base_stat/2}%`
+        pokeSpDef.style.width = `${data.stats[4].base_stat/2}%`
+        pokeVel.style.width = `${data.stats[5].base_stat/2}%`
+        writeDescription(data.species.url , pokeDesc);
         pokeDesc.textContent = data.name
         const pokeSprites = currentPokemon.sprites;
         for (const key in pokeSprites) {
@@ -76,23 +71,32 @@ const printPokemon = (pokemon) => {
 }
 
 const printPokemons = (API) => {
+    const loader = document.createElement("li")
+    loader.innerHTML = '';
+    loader.classList.add('loader')
+    pokemonsList.append(loader)
     fetchData(API).then(pokemons => {
-        
+        loader.remove();
         listPokemons = pokemons
         pokemons.results.map(pokemon =>{
             const listItem = document.createElement("li")
             fetchData(pokemon.url).then(details =>{
+                listItem.classList.add("default")
+                listItem.classList.add(details.types[0].type.name)
+                //console.log(details.sprites)
                 listItem.innerHTML = `
                 <img src=${details.sprites.front_default} alt=${details.name}/>
                 <div>
                     <h3>${details.name}</h3>
-                    ${details.types.map(type => `<span>${type.type.name}</span>`)}
+                    <div class="types">
+                    ${details.types.map((type) => `<span>${type.type.name}</span>`)}
+                    </div>
                     <p id=${details.name}></p>
                     <button onclick=printPokemon(${details.id})>Show Pokemon</button>
                 </div>
                 `;
                 const detailsPok = document.querySelector(`#${details.name}`)
-                // wirteDescription(details.species.url, detailsPok);
+                writeDescription(details.species.url, detailsPok);
             })
             pokemonsList.appendChild(listItem);
         })
@@ -129,17 +133,28 @@ const prevPokemon = () =>{
 
 
 const nextPokemons = () => {
+    pokemonsList.innerHTML="";
     fetchData(listPokemons.next).then( newData => {
         printPokemons(newData.next)
     })
 }
 
 const prevPokemons = () => {
+    pokemonsList.innerHTML="";
     fetchData(listPokemons.previous).then( newData => {
         printPokemons(newData.previous)
     })
 }
 
+const searchPokemon = () => {
+    event.preventDefault(); 
+    const input= event.target.search
+    fetchData(`${BASE_API}/pokemon/${input.value}`)
+        .then(data => {
+            printPokemon(data.name)
+        })
+    
+}
 printPokemon(1)
-printPokemons(`${BASE_API}/pokemon?limit=15&offset=0`);
+printPokemons(`${BASE_API}/pokemon?limit=16&offset=0`);
 
